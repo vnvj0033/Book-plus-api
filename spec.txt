@@ -1,0 +1,19 @@
+안드로이드 앱 기획
+
+메인화면
+리스트 : 선호 장르 새로 진입한 베스트 셀러 
+리스트 : 선호 장르 신간 베스트 셀러
+버튼 : 메인화면 -> 장르별 베스트 셀러 이동
+버튼 : 선호장르 등록
+
+장르별 베스트 셀러
+라디오 버튼 : 선호장르 체크
+
+User 데이터 테이블
+deviceId : String
+genre : Int 29 bit
+
+
+UserFavoriteGenre
+deviceId : String
+book : Book
