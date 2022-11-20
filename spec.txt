@@ -1,5 +1,53 @@
 안드로이드 앱 기획
 
+======================================================
+메인 화면
+------------------------------------------------------
+MainContent {
+    ProgressDialog()
+    Row {
+        PlatformSelectionList()
+        GenreSelectionList()
+        BookList()
+        BottomNavigation()
+    }
+}
+
+PlatformSelectionList {
+    LazyColumn(item = Platform())
+}
+
+GenreSelectionList {
+    LazyColumn(item = RoundButton())
+}
+
+BookList {
+    LazyRow(item = MainBook())
+}
+
+BottomNavigation {
+    Column {
+        Home()
+        BookFavorite()
+        GenreSubscription()
+        Setting()
+    }
+}
+------------------------------------------------------
+메인 화면
+    - 플랫폼을 선택하고 장르를 선택하면 리스트에 베스트 셀러 리스트를 표시한다.
+    - 리스트의 책은 즐겨찾기 가능하며 즐겨찾기의 리스트는 따로 저장한다.
+
+선호북 화면
+    - 선호북 아이템이 최신순으로 정렬되어있다.
+    - 선호북을 해제할 수 있다.
+
+선호 장르 화면
+    - 플랫폼의 선호장르들을 선택이 가능하다.
+    - 선택된 장르들은 리스트에 표시된다.
+    - 새로 추가된 장르의 베스트셀러는 푸시 알림을 전송한다.
+======================================================
+
 메인화면
 리스트 : 선호 장르 새로 진입한 베스트 셀러 
 리스트 : 선호 장르 신간 베스트 셀러
@@ -9,11 +57,15 @@
 장르별 베스트 셀러
 라디오 버튼 : 선호장르 체크
 
+
+
+
+
 User 데이터 테이블
-deviceId : String
+deviceId : String (primary)
 genre : Int 29 bit
 
 
-UserFavoriteGenre
+UserFavoriteGenre 테이블
 deviceId : String
 book : Book
