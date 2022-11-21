@@ -1,15 +1,14 @@
 const axios = require("axios");
 
-loadBookList("1", "2")
+loadBookList("1", "2");
 
 function loadBookList(page, size) {
   const period = "002";
   const bsslBksClstCode = "A";
 
-
-
   const http = () => {
-    const baseUrl = "https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/total";
+    const baseUrl =
+      "https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/total";
 
     try {
       return axios.get(baseUrl, {
@@ -18,27 +17,28 @@ function loadBookList(page, size) {
           per: size,
           period: period,
           bsslBksClstCode: bsslBksClstCode,
-        }
+        },
       });
     } catch (error) {
       console.error(error);
     }
   };
 
-  http().then((response) => {
-    const data = response.data;
-    data.data.bestSeller.forEach((element) => {
-      const book = parserBook(element);
+  http()
+    .then((response) => {
+      const data = response.data;
+      data.data.bestSeller.forEach((element) => {
+        const book = parserBook(element);
 
-      const json = JSON.stringify(book);
+        const json = JSON.stringify(book);
 
-      console.log(json);
+        console.log(json);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
     });
-  }).catch((error) => {
-    console.error(error);
-  });
 }
-
 
 function parserBook(element) {
   return {
