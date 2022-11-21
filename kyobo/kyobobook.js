@@ -1,8 +1,6 @@
 const axios = require("axios");
 
-loadBookList("1", "2");
-
-function loadBookList(page, size) {
+module.exports = function loadBookList(page, size) {
   const period = "002";
   const bsslBksClstCode = "A";
 
@@ -38,7 +36,7 @@ function loadBookList(page, size) {
     .catch((error) => {
       console.error(error);
     });
-}
+};
 
 function parserBook(element) {
   return {
