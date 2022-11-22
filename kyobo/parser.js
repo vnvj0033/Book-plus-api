@@ -1,33 +1,13 @@
-const kyoboGener = {
-  종합: "A",
-  소설: "B",
-  에세이: "C",
-  한국소설: "D",
-  외국소설: "E",
-  시: "F",
-  아동: "G",
-  가정생활: "H",
-  인문: "I",
-  정치사회: "J",
-  경제경영: "K",
-  건강: "L",
-  과학: "M",
-  외국어: "N",
-  예술: "Q",
-  취미스포츠: "R",
-  "TOEIC/TOEFL": "S",
-  유아: "T",
-  종교: "U",
-  아동만화: "V",
-  요리: "a",
-  "역사/문학": "b",
-  자기계발: "c",
-  여행: "d",
-  "기술/컴퓨터": "e",
-  만화: "f",
-  청소년: "g",
-  서양도서: "h",
-  일본도서: "i",
+module.exports = function parserBook(element) {
+  return {
+    rank: element.prstRnkn,
+    imageUrl:
+      "https://contents.kyobobook.co.kr/sih/fit-in/142x0/pdt/" +
+      element.cmdtCode +
+      ".jpg",
+    title: element.cmdtName,
+    wirter: element.chrcName,
+    publisher: element.pbcmName,
+    summary: element.inbukCntt,
+  };
 };
-
-Object.freeze(kyoboGener);
