@@ -1,6 +1,7 @@
 const kyobo = require("./kyobo/loadBook.js");
 const parser = require("./kyobo/parser.js");
 const models = require("./models");
+const express = require("express");
 
 models.sequelize
   .sync()
@@ -37,4 +38,12 @@ function start() {
     .catch((error) => {
       console.error(error);
     });
+
+
+  models.User.create({
+    deviceId: "deviceId",
+    bookTitle: "bookTitle"
+  })
 }
+
+
