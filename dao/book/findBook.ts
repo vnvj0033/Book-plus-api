@@ -1,7 +1,5 @@
-const book = require("../models/book");
-const models = require("../models");
-
-
+const book = require("../../models/book");
+const models = require("../../models");
 
 
 module.exports = function findBookInDB(bookTitle) {
@@ -10,10 +8,19 @@ module.exports = function findBookInDB(bookTitle) {
         .then(() => {
             console.log("✓ DB 연결 성공");
 
-            const books = models.Book.findAll({
-                raw: true,
-                where: [{ title: bookTitle }],
-            });
+            let books;
+
+            if (bookTitle.length == 0) {
+                books = models.Book.findAll({
+                    raw: true
+                })
+
+            } else {
+                books = models.Book.findAll({
+                    raw: true,
+                    where: [{ title: bookTitle }],
+                });
+            }
 
             books.then((result) => {
                 console.log("BOOKS : ", result);
