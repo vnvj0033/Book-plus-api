@@ -1,18 +1,24 @@
+const express = require("express");
 const kyobo = require("./kyobo/loadBook.js");
 const parser = require("./kyobo/parser.js");
 const models = require("./models");
-const express = require("express");
 const findBook = require("./dao/book/findBook.ts");
 
+const app = express()
 
-// app.get("/books", (req, res) => {
-//   const books = findBook("트렌드 코리아 2023")
-// });
-
-// app.listen(5000);
+app.get("/books", (req, res) => {
+  const body = req.body;
+  let { title } = body;
 
 
-findBook("트렌드 코리아 2023")
+  const books = findBook(title)
+
+  res.send({ books });
+});
+
+app.listen(3000, () => {
+  console.log("서버를 시작합니다.")
+});
 
 
 function start() {
