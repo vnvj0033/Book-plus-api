@@ -2,18 +2,10 @@ const kyobo = require("./kyobo/loadBook.js");
 const parser = require("./kyobo/parser.js");
 const models = require("./models");
 const express = require("express");
+const findBook = require("./dao/findBook.js");
 
-models.sequelize
-  .sync()
-  .then(() => {
-    console.log("✓ DB 연결 성공");
-    start()
-  })
-  .catch(function (err) {
-    console.error(err);
-    console.log("✗ DB 연결 에러");
-    process.exit();
-  });
+findBook("트렌드 코리아 2023")
+
 
 
 function start() {
