@@ -2,7 +2,7 @@ const book = require("../../models/book");
 const models = require("../../models");
 
 
-module.exports = function findBookInDB(bookTitle) {
+module.exports = function findBookInDB(title) {
     models.sequelize
         .sync()
         .then(() => {
@@ -10,7 +10,7 @@ module.exports = function findBookInDB(bookTitle) {
 
             let books;
 
-            if (bookTitle.length == 0) {
+            if (title.length == 0) {
                 books = models.Book.findAll({
                     raw: true
                 })
@@ -18,12 +18,12 @@ module.exports = function findBookInDB(bookTitle) {
             } else {
                 books = models.Book.findAll({
                     raw: true,
-                    where: [{ title: bookTitle }],
+                    where: [{ title: title }],
                 });
             }
 
             books.then((result) => {
-                console.log("BOOKS : ", result);
+
             })
                 .catch((error) => {
                     console.error(error);
@@ -32,6 +32,5 @@ module.exports = function findBookInDB(bookTitle) {
         .catch(function (err) {
             console.error(err);
             console.log("✗ DB 연결 에러");
-            return 0;
         });
 }

@@ -7,13 +7,38 @@ const findBook = require("./dao/book/findBook.ts");
 const app = express()
 
 app.get("/books", (req, res) => {
-  const body = req.body;
-  let { title } = body;
+  const title = req.query.title
+
+  models.sequelize
+    .sync()
+    .then(() => {
+      let books;
+      if (title.length == 0) {
+        books = models.Book.findAll({
+          raw: true
+        })
+      } else {
+        books = models.Book.findAll({
+          raw: true,
+          where: [{ title: title }],
+        });
+      }
+
+      books.then((result) => {
+        res.send({ result });
+      })
+        .catch((error) => {
+          console.error(error);
+          res.status(400).send({ result, });
+        });
+
+    })
+    .catch((err) => {
+
+    })
 
 
-  const books = findBook(title)
 
-  res.send({ books });
 });
 
 app.listen(3000, () => {
