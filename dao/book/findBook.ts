@@ -2,7 +2,7 @@ const book = require("../../models/book");
 const models = require("../../models");
 
 
-module.exports = function findBookInDB(title) {
+module.exports = function findBookInDB(title, callback) {
     models.sequelize
         .sync()
         .then(() => {
@@ -23,7 +23,7 @@ module.exports = function findBookInDB(title) {
             }
 
             books.then((result) => {
-
+                callback(result)
             })
                 .catch((error) => {
                     console.error(error);

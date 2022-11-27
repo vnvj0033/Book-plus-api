@@ -9,35 +9,9 @@ const app = express()
 app.get("/books", (req, res) => {
   const title = req.query.title
 
-  models.sequelize
-    .sync()
-    .then(() => {
-      let books;
-      if (title.length == 0) {
-        books = models.Book.findAll({
-          raw: true
-        })
-      } else {
-        books = models.Book.findAll({
-          raw: true,
-          where: [{ title: title }],
-        });
-      }
-
-      books.then((result) => {
-        res.send({ result });
-      })
-        .catch((error) => {
-          console.error(error);
-          res.status(400).send({ result, });
-        });
-
-    })
-    .catch((err) => {
-
-    })
-
-
+  findBook(title, (books) => {
+    res.send({ books })
+  })
 
 });
 
