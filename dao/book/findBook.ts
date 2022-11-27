@@ -3,6 +3,10 @@ const models = require("../../models");
 
 
 module.exports = function findBookInDB(title, callback) {
+    if (title == undefined) {
+        title = ""
+    }
+
     models.sequelize
         .sync()
         .then(() => {
