@@ -1,7 +1,7 @@
 const cron = require('node-cron');
 const kyobo = require("../kyobo/loadBook.js");
 
-module.exports = function startCron() {
+exports = function startCron() {
 
     const task = cron.schedule('0 0 0 * *', function () {
         console.log('매 시 마다 작업 실행');
