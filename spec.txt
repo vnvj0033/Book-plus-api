@@ -1,15 +1,30 @@
 안드로이드 앱 기획
 
 ======================================================
+메인 컨테이너
+------------------------------------------------------
+Scaffold (
+    Bottom = BottomNavigation()
+) {
+    ProgressDialog()
+
+    navigate {
+        MainContent()
+        GenreFavorite()
+        GenreSubscription()
+        Setting()
+    }
+    
+}
+
+======================================================
 메인 화면
 ------------------------------------------------------
 MainContent {
-    ProgressDialog()
     Row {
         PlatformSelectionList()
         GenreSelectionList()
         BookList()
-        BottomNavigation()
     }
 }
 
@@ -59,7 +74,15 @@ BottomNavigation {
 
 
 
-
+======================================================
+선호 장르 선택
+------------------------------------------------------
+FavoriteGenreUI() {
+    BookList() { Book ->
+        Book()
+    }
+}
+------------------------------------------------------
 
 User 데이터 테이블
 deviceId : String (primary)
