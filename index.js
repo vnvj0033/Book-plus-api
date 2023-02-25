@@ -37,6 +37,19 @@ app.get("/books", (req, res) => {
 });
 
 
+app.get("/subject", (req, res) => {
+  console.log('get subject')
+  console.log(req.query)
+
+  const data = {
+    subject: 'a',
+    subject: 'b'
+  }
+
+  res.send(data)
+});
+
+
 app.post("/books", (req, res) => {
 
   // const books = req.body.books;
