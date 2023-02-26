@@ -9,6 +9,7 @@ app.use(express.json());
 
 app.get("/books", (req, res) => {
   const title = req.query.title;
+
   console.log('get book')
   console.log(req.query)
 
@@ -38,6 +39,11 @@ app.get("/books", (req, res) => {
 
 
 app.post("/books", (req, res) => {
+
+  console.log('post book')
+  console.log(req.body)
+
+  res.send('ok')
 
   // const books = req.body.books;
 
