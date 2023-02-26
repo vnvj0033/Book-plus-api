@@ -3,12 +3,12 @@ const getAll = require("./dao/book/getAllBook.js")
 
 
 add({
-    title: "book.title",
-    rank: "book.rank",
-    imageUrl: "book.imageUrl",
-    wirter: "book.wirter",
-    publisher: "book.publisher",
-    summary: "book.summary"
+    "title": "1번 title",
+    "rank": "2번 rank",
+    "imageUrl": "3번 imageUrl",
+    "wirter": "4번 wirter",
+    "publisher": "5번 publisher",
+    "summary": "6번 summary"
 })
 
 getAll((data) => {

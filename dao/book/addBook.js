@@ -1,6 +1,9 @@
 const models = require('../../models')
 
 function addBook(book) {
+
+    console.log("add book", book)
+
     models.Book.create({
         title: book.title,
         rank: book.rank,
