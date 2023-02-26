@@ -1,10 +1,6 @@
-const models = require("models");
+import models from "../../models";
 
 export function getBook(title, callback) {
-  if (title == undefined) {
-    title = "";
-  }
-
   models.sequelize
     .sync()
     .then(() => {
@@ -22,7 +18,6 @@ export function getBook(title, callback) {
         });
     })
     .catch(function (err) {
-      console.error(err);
-      console.log("✗ DB 연결 에러");
+      callback(err)
     });
 }

@@ -1,6 +1,6 @@
-const models = require("models");
+const models = require('../../models')
 
-export function addBook(book) {
+function addBook(book) {
     models.Book.create({
         title: book.title,
         rank: book.rank,
@@ -13,3 +13,5 @@ export function addBook(book) {
         console.log("✗ DB 연결 에러");
     });
 }
+
+module.exports = addBook

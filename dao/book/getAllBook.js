@@ -1,6 +1,6 @@
-const models = require("models");
+const models = require('../../models')
 
-export function getAllBook(callback) {
+function getAllBook(callback) {
     models.sequelize
         .sync()
         .then(() => {
@@ -21,3 +21,5 @@ export function getAllBook(callback) {
             console.log("✗ DB 연결 에러");
         });
 }
+
+module.exports = getAllBook
