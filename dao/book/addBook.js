@@ -1,20 +1,19 @@
-const models = require('../../models')
+const models = require("../../models");
 
 function addBook(book) {
+  console.log("add book", book);
 
-    console.log("add book", book)
-
-    models.Book.create({
-        title: book.title,
-        rank: book.rank,
-        imageUrl: book.imageUrl,
-        wirter: book.wirter,
-        publisher: book.publisher,
-        summary: book.summary,
-    }).catch((err) => {
-        console.error(err);
-        console.log("✗ DB 연결 에러");
-    });
+  models.Book.create({
+    title: book.title,
+    rank: book.rank,
+    imageUrl: book.imageUrl,
+    wirter: book.wirter,
+    publisher: book.publisher,
+    summary: book.summary,
+  }).catch((err) => {
+    console.error(err);
+    console.log("✗ DB 연결 에러");
+  });
 }
 
-module.exports = addBook
+module.exports = addBook;

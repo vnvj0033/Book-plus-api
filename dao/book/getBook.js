@@ -1,6 +1,6 @@
-import models from "../../models";
+const models = require("../../models");
 
-export function getBook(title, callback) {
+function getBook(title, callback) {
   models.sequelize
     .sync()
     .then(() => {
@@ -17,7 +17,10 @@ export function getBook(title, callback) {
           console.error(error);
         });
     })
-    .catch(function (err) {
-      callback(err)
+    .catch((err) => {
+      console.error(err);
+      console.log("✗ DB 연결 에러");
     });
 }
+
+module.exports = getBook;
