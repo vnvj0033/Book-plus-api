@@ -16,5 +16,6 @@ module.exports = function loadBook(page, size, callback) {
         bsslBksClstCode: bsslBksClstCode,
       },
     })
-    .then((response) => callback(response));
+    .then((response) => callback(response.data.data.bestSeller))
+    .error((error) => console.error(error));
 };
