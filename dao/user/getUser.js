@@ -1,15 +1,15 @@
 const models = require("../../models");
 
-function getUser(deviceId, callback) {
+function getUser(id, callback) {
   models.sequelize
     .sync()
     .then(() => {
-      const books = models.User.findAll({
+      const user = models.User.findAll({
         raw: true,
-        where: [{ deviceId: deviceId }],
+        where: [{ id: id }],
       });
 
-      books
+      user
         .then((result) => {
           callback(result);
         })

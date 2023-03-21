@@ -7,7 +7,6 @@ const PORT = 4500
 const DATABASE_URI = 'mongodb://localhost:27017/todos'
 
 
-
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)
 
@@ -22,7 +21,7 @@ app.listen(PORT, () => {
 
 
 function run() {
-    const Book = require('./models/book-mongoose')
+    const Book = require('./models/mongoose/book-mongoose')
 
     const book = new Book({
         title: '{ type: String }',

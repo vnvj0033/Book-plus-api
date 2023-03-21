@@ -1,14 +1,10 @@
 module.exports = function (sequelize, DataTypes) {
     const user = sequelize.define("User", {
-        deviceId: {
+        id: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         nickName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        representativeGenre: {
             type: DataTypes.STRING,
             allowNull: false,
         }
