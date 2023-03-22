@@ -1,17 +1,13 @@
 const models = require("../models");
 
-class BookDao {
-  model = models.Book;
+class UserDao {
+  model = models.User;
 
-  add(book) {
+  add(user) {
     this.model
       .create({
-        title: book.title,
-        rank: book.rank,
-        imageUrl: book.imageUrl,
-        wirter: book.wirter,
-        publisher: book.publisher,
-        summary: book.summary,
+        id: user.id,
+        nick_name: user.nickName,
       })
       .catch((err) => {
         console.error(err);
@@ -19,10 +15,11 @@ class BookDao {
       });
   }
 
-  getAll(callback) {
+  get(id, callback) {
     this.model
       .findAll({
         raw: true,
+        where: [{ id: id }],
       })
       .then((result) => {
         callback(result);
@@ -32,21 +29,7 @@ class BookDao {
       });
   }
 
-  get(title, callback) {
-    this.model
-      .findAll({
-        raw: true,
-        where: [{ title: title }],
-      })
-      .then((result) => {
-        callback(result);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  removeBook(callback) {
+  removeUser(callback) {
     this.model
       .destroy({
         where: {},
@@ -61,4 +44,4 @@ class BookDao {
   }
 }
 
-module.exports = BookDao;
+module.exports = UserDao;
