@@ -46,7 +46,7 @@ class BookDao {
       });
   }
 
-  removeBook(callback) {
+  removeAll(callback) {
     this.model
       .destroy({
         where: {},

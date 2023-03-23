@@ -29,7 +29,7 @@ class UserDao {
       });
   }
 
-  removeUser(callback) {
+  removeAll(callback) {
     this.model
       .destroy({
         where: {},
