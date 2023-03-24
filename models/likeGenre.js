@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  const userFavoriteGenre = sequelize.define("UserFavoriteGenre", {
-    deviceId: {
+  const userFavoriteGenre = sequelize.define("Genre", {
+    id: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gener: {
+    genre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
