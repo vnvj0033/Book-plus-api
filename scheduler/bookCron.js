@@ -1,5 +1,5 @@
 const cron = require("node-cron");
-const kyobo = require("../kyobo/loadBook.js");
+const kyobo = require("../datasorce/axios/kyobo/loadBook");
 
 exports = function startCron() {
   const task = cron.schedule(
@@ -17,8 +17,7 @@ exports = function startCron() {
 };
 
 function start() {
-  kyobo("1", "1")
-    .then((response) => {
+  kyobo("1", "1").then((response) => {
       const data = response.data;
       data.data.bestSeller.forEach((element) => {
         const book = parser(element);
