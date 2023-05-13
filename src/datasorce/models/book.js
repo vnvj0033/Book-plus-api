@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    imageUrl: {
+    image_url: {
       type: DataTypes.STRING,
     },
     writer: {
@@ -28,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
 };
 
 // rank: element.prstRnkn,
-// imageUrl: "https://contents.kyobobook.co.kr/sih/fit-in/142x0/pdt/${element.cmdtCode}.jpg",
+// image_url: "https://contents.kyobobook.co.kr/sih/fit-in/142x0/pdt/${element.cmdtCode}.jpg",
 // title: element.cmdtName,
 // writer: element.chrcName,
 // publisher: element.pbcmName,

@@ -9,8 +9,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/books", (req, res) => {
-  console.log('call get books')
+  console.log('========call get books========')
   console.log('query : ${req.query}')
+  console.log('========================')
 
   const { platform } = req.query;
 

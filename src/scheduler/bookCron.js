@@ -25,7 +25,7 @@ function start() {
       models.Book.create({
         title: book.title,
         rank: book.rank,
-        imageUrl: book.imageUrl,
+        image_url: book.image_url,
         writer: book.writer,
         publisher: book.publisher,
         summary: book.summary,
