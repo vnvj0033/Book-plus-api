@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   const userFavoriteGenre = sequelize.define("LikeGenre", {
-    id: {
+    userId: {
       type: DataTypes.STRING,
       allowNull: false,
     },

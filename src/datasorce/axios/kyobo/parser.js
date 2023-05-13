@@ -1,10 +1,11 @@
 module.exports = function parserBook(element) {
   const book = {
-    'img_url':"https://contents.kyobobook.co.kr/sih/fit-in/142x0/pdt/" + element.cmdtCode + ".jpg",
+    'rank':element.prstRnkn,
     'title':element.cmdtName,
+    'imgUrl':"https://contents.kyobobook.co.kr/sih/fit-in/142x0/pdt/" + element.cmdtCode + ".jpg",
     'wirter':element.chrcName,
-    'publish':element.pbcmName,
-    'summery':element.inbukCntt
+    'publisher':element.pbcmName,
+    'summary':element.inbukCntt
   }
   return book
 };

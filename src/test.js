@@ -1,9 +1,11 @@
 const parser = require("./datasorce/axios/kyobo/parser");
 const loadBook = require("./datasorce/axios/kyobo/loadBook")
+const bookNetLoader = require("./datasorce/axios/bookNetLoader")
+const bookDao = require("./datasorce/dao/bookDao")
 
-loadBook("1", "20", (response) => {
-    response.forEach( element => {
-        const book = parser(element);
-        console.log(book)
-    });
-})
+const bookLoader = new bookNetLoader()
+const dao = new bookDao()
+
+const books = bookLoader.loadBooksForPlatform('kyobo', 1, (books) => {
+    dao.saveBooksForDB('kyobo', books)
+  })

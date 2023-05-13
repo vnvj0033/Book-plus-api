@@ -1,4 +1,5 @@
 const models = require("../models");
+const parser = require("../axios/kyobo/parser")
 
 module.exports = class BookDao {
   model = models.Book;
@@ -67,8 +68,9 @@ module.exports = class BookDao {
   }
 
   saveBooksForDB(platform, books) {
-    books.array.forEach(book => {
-      this.add(book)
+    books.forEach(book => {
+      console.log(parser(book))
+      this.add(parser(book))
     });
   }
 }

@@ -10,36 +10,30 @@ app.use(express.json());
 app.get("/books", (req, res) => {
   console.log('call get books')
   console.log('query : ${req.query}')
-
+  
   const { platform } = req.query;
   
-  const books = loadBooksForDB(platform)
-  res.send(books)
+  const dao = new bookDao()
+  dao.getAll((books) => {
+    res.send(books)
+  })
 });
 
 app.listen(3000, () => {
   console.log("서버를 시작합니다.");
-
   createBookDatabase()
 });
 
 
 function createBookDatabase() {
-  const platforms = ['kyobo', 'yes24', 'aladin']
+  const dao = new bookDao()
+  const bookLoader = new bookNetLoader()
 
-  bookDao.getAll( books => {
-    console.log(books)
-  })
-  bookDao.removeAll()
-  bookDao.getAll( books => {
-    console.log(books)
-  })
+  const platforms = ['kyobo']
 
-  platforms.forEach( platform => {
-    const books = bookNetLoader.loadBooksForPlatform(platform, 20)
-    bookDao.saveBooksForDB(platform, books)
-    bookDao.getAll( books => {
-      console.log(books)
+  dao.removeAll(() => {
+    bookLoader.loadBooksForPlatform('kyobo', 20, (books) => {
+      dao.saveBooksForDB('kyobo', books)
     })
   })
 }
