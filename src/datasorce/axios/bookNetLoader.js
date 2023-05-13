@@ -6,6 +6,8 @@ module.exports = class BookNetLoader {
             kyoboLoadBook("1", size, (result) => {
                 callback(result)
             })
+        } else if (platform == 'yes24'){
+
         }
     }
 }
