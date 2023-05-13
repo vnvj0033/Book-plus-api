@@ -11,7 +11,7 @@ module.exports = function (sequelize, DataTypes) {
     imageUrl: {
       type: DataTypes.STRING,
     },
-    wirter: {
+    writer: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,6 +30,6 @@ module.exports = function (sequelize, DataTypes) {
 // rank: element.prstRnkn,
 // imageUrl: "https://contents.kyobobook.co.kr/sih/fit-in/142x0/pdt/${element.cmdtCode}.jpg",
 // title: element.cmdtName,
-// wirter: element.chrcName,
+// writer: element.chrcName,
 // publisher: element.pbcmName,
 // summary: element.inbukCntt,

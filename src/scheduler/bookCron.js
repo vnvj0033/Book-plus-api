@@ -26,7 +26,7 @@ function start() {
         title: book.title,
         rank: book.rank,
         imageUrl: book.imageUrl,
-        wirter: book.wirter,
+        writer: book.writer,
         publisher: book.publisher,
         summary: book.summary,
       });

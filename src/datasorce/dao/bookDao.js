@@ -10,7 +10,7 @@ module.exports = class BookDao {
         title: book.title,
         rank: book.rank,
         imageUrl: book.imageUrl,
-        wirter: book.wirter,
+        writer: book.writer,
         publisher: book.publisher,
         summary: book.summary,
       })
@@ -19,6 +19,7 @@ module.exports = class BookDao {
         console.log("✗ DB 연결 에러");
       });
   }
+
 
   getAll(callback) {
     this.model
@@ -57,19 +58,12 @@ module.exports = class BookDao {
         callback(result);
       })
       .catch((error) => {
-        console.error(error);
+        callback(error);
       });
-  }
-
-  clearDB() {
-    removeAll((result) => {
-      console.log(result)
-    })
   }
 
   saveBooksForDB(platform, books) {
     books.forEach(book => {
-      console.log(parser(book))
       this.add(parser(book))
     });
   }
