@@ -4,11 +4,13 @@ module.exports = function loadBook(page, size, callback) {
   const period = "002";
   const bsslBksClstCode = "A";
 
-  const baseUrl =
-    "https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/total";
+  const baseUrl = "https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/total";
+  const headers = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36' }
+
 
   axios
     .get(baseUrl, {
+      headers,
       params: {
         page: page,
         per: size,
@@ -17,9 +19,7 @@ module.exports = function loadBook(page, size, callback) {
       },
     })
     .then((response) => {
-      console.log(response)
       callback(response.data.data.bestSeller)
-
     })
 
 };

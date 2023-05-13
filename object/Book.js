@@ -1,4 +1,4 @@
-class Book {
+module.exports = class Book {
     constructor(img_url, title, wirter, summary, genre) {
         this.img_url = img_url
         this.title = title
