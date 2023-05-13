@@ -1,6 +1,6 @@
 const express = require("express");
 const parser = require("./kyobo/parser.js");
-const models = require("./models");
+const models = require("./");
 // const bookDao = require("./dao/bookDao.ts");
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(express.json());
 app.get("/books", (req, res) => {
   const title = req.query.title;
 
-  console.log('get book')
+  console.log('get books')
   console.log(req.query)
 
   let data = [
@@ -67,8 +67,14 @@ app.post("/books", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("서버를 시작합니다.");
+  console.log("서버를 시작합니다.");  
 
-  
+  createBookDatabase()
 });
+
+function createBookDatabase() {
+  // db를 초기화 한다.
+  // kyobo books 가저오기
+  // 
+}
 
