@@ -1,6 +1,6 @@
 const models = require("../models");
 
-class BookDao {
+module.exports = class BookDao {
   model = models.Book;
 
   add(book) {
@@ -59,6 +59,16 @@ class BookDao {
         console.error(error);
       });
   }
-}
 
-module.exports = BookDao;
+  clearDB() {
+    removeAll((result) => {
+      console.log(result)
+    })
+  }
+
+  saveBooksForDB(platform, books) {
+    books.array.forEach(book => {
+      this.add(book)
+    });
+  }
+}

@@ -1,80 +1,46 @@
 const express = require("express");
-const parser = require("./kyobo/parser.js");
-const models = require("./");
-// const bookDao = require("./dao/bookDao.ts");
+const bookDao = require("./datasorce/dao/bookDao")
+const bookNetLoader = require("./datasorce/axios/bookNetLoader")
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/books", (req, res) => {
-  const title = req.query.title;
+  console.log('call get books')
+  console.log('query : ${req.query}')
 
-  console.log('get books')
-  console.log(req.query)
-
-  let data = [
-    {
-      title: 'title1',
-      wirter: 'wirter1',
-      summary: 'this is book of bookplus test wow!'
-    },
-    {
-      title: 'title2',
-      wirter: 'wirter2',
-      summary: 'this is book of bookplus test wow! 22'
-    },
-    {
-      title: 'title3',
-      wirter: 'wirter3',
-      summary: 'this is book of bookplus test wow! 33'
-    },
-  ]
-
-  res.send(data)
-  // bookDao.findBook(title, (books) => {
-  //   res.send({ books });
-  // });
-});
-
-
-app.get("/subject", (req, res) => {
-  console.log('get subject')
-  console.log(req.query)
-
-  const data = {
-    subject: 'a',
-    subject: 'b'
-  }
-
-  res.send(data)
-});
-
-
-app.post("/books", (req, res) => {
-
-  console.log('post book')
-  console.log(req.body)
-
-  res.send('ok')
-
-  // const books = req.body.books;
-
-  // books.forEach((book) => {
-  //   bookDao.saveBook(book);
-  // });
-  // res.send({ result: "ok" });
+  const { platform } = req.query;
+  
+  const books = loadBooksForDB(platform)
+  res.send(books)
 });
 
 app.listen(3000, () => {
-  console.log("서버를 시작합니다.");  
+  console.log("서버를 시작합니다.");
 
   createBookDatabase()
 });
 
+
 function createBookDatabase() {
-  // db를 초기화 한다.
-  // kyobo books 가저오기
-  // 
+  const platforms = ['kyobo', 'yes24', 'aladin']
+
+  bookDao.getAll( books => {
+    console.log(books)
+  })
+  bookDao.removeAll()
+  bookDao.getAll( books => {
+    console.log(books)
+  })
+
+  platforms.forEach( platform => {
+    const books = bookNetLoader.loadBooksForPlatform(platform, 20)
+    bookDao.saveBooksForDB(platform, books)
+    bookDao.getAll( books => {
+      console.log(books)
+    })
+  })
 }
 
