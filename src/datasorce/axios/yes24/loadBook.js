@@ -19,16 +19,18 @@ module.exports = function loadBook(page, size, callback) {
     // 1위~40위까지의 책들에 대한 selector
     const booksSelector = '#bestList > ol > li';
     $(booksSelector).each((i, elem) => {
-        const title = $(elem).find('p:nth-child(3) > a').text();
-        const description = $(elem).find('p.copy > a').text();
-        const price = $(elem).find('p.price > strong').text();
-        const imgUrl = $(elem).find('p.image > a > img').attr('src');
-        console.log(i + 1, {
-            title,
-            description,
-            price,
-            imgUrl,
-        });
+      const rank = i + 1
+      const title = $(elem).find('p:nth-child(3) > a').text();
+      const description = $(elem).find('p.copy > a').text();
+      const price = $(elem).find('p.price > strong').text();
+      const imgUrl = $(elem).find('p.image > a > img').attr('src');
+      console.log(i + 1, {
+        rank,
+        title,
+        description,
+        price,
+        imgUrl,
+      });
     });
   }).catch(err => {
     console.error(err);
