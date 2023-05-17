@@ -1,4 +1,5 @@
 const axios = require("axios");
+const parser = require("./parser");
 
 module.exports = function loadBook(page, size, callback) {
   const period = "002";
@@ -19,7 +20,13 @@ module.exports = function loadBook(page, size, callback) {
       },
     })
     .then((response) => {
-      callback(response.data.data.bestSeller)
+      const books = response.data.data.bestSeller
+      const list = new Array
+
+      books.forEach(element => {
+        list.push(parser(element))
+      });
+      callback(list)
     })
 
 };
