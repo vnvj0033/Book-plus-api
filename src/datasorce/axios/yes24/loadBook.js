@@ -15,7 +15,8 @@ module.exports = function loadBook(page, size, callback) {
   }).then(response => {
     const content = iconv.decode(response.data, 'EUC-KR');
     const $ = cheerio.load(content);
-
+    
+    const list = new Array
     // 1위~40위까지의 책들에 대한 selector
     const booksSelector = '#bestList > ol > li';
     $(booksSelector).each((i, elem) => {
@@ -25,15 +26,17 @@ module.exports = function loadBook(page, size, callback) {
       const writer = $(elem).find('p.aupu > a:nth-child(2)').text();
       const publisher = $(elem).find('p.aupu > a:nth-child(1)').text();
       const summary = $(elem).find('p.copy > a').text();
-      console.log(i + 1, {
-        title,
-        rank,
-        image_url,
-        writer,
-        publisher,
-        summary,
-      });
+      list.push({
+        'title':title,
+        'rank':rank,
+        'image_url':image_url,
+        'writer':writer,
+        'publisher':publisher,
+        'summary':summary
+      })
     });
+
+    callback(list)
   }).catch(err => {
     console.error(err);
   });
