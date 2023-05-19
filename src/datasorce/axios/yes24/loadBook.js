@@ -27,6 +27,7 @@ module.exports = function loadBook(page, size, callback) {
       const publisher = $(elem).find('p.aupu > a:nth-child(1)').text();
       const summary = $(elem).find('p.copy > a').text();
       list.push({
+        'platform':'yes24',
         'title':title,
         'rank':rank,
         'image_url':image_url,
