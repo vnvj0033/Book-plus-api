@@ -28,8 +28,8 @@ module.exports = function loadBook(page, size, callback) {
       const summary = $(elem).find('p.copy > a').text();
       list.push({
         'platform':'yes24',
-        'title':title,
         'rank':rank,
+        'title':title,
         'image_url':image_url,
         'writer':writer,
         'publisher':publisher,
