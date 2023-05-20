@@ -16,7 +16,7 @@ app.get("/books", (req, res) => {
   const { platform } = req.query;
 
   const dao = new bookDao()
-  dao.getAll((books) => {
+  dao.getWithPlatform(platform, (books) => {
     res.send(books)
   })
 });

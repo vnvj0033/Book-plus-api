@@ -34,11 +34,11 @@ module.exports = class BookDao {
       });
   }
 
-  get(title, callback) {
+  getWithPlatform(platform, callback) {
     this.model
       .findAll({
         raw: true,
-        where: [{ title: title }],
+        where: [{ platform: platform }],
       })
       .then((result) => {
         callback(result);
