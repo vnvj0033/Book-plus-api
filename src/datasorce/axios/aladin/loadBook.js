@@ -34,7 +34,6 @@ module.exports = function loadBook(page, size, callback) {
       }
     });
 
-    console.log(list)
     callback(list)
   }).catch(err => {
     console.error(err);

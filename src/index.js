@@ -32,12 +32,11 @@ function createBookDatabase() {
   const dao = new bookDao()
   const bookLoader = new bookNetLoader()
 
-  const platforms = ['kyobo', 'yes24']
+  const platforms = ['kyobo', 'yes24', 'aladin']
   models.sequelize.sync({ force: true }).then(() => {
     dao.removeAll(() => {
       platforms.forEach(platform => {
         bookLoader.loadBooksForPlatform(platform, 10, (books) => {
-          console.log(books)
           dao.saveBooksForDB(books)
         })
       })
