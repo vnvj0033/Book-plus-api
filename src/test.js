@@ -10,6 +10,6 @@ const bookLoader = new bookNetLoader()
 const dao = new bookDao()
 
 
-aladinBookLoader("1", "20",  (list) => {
+aladinBookLoader(2, 10,  (list) => {
     console.log(list)
 })
