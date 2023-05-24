@@ -9,10 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/books", (req, res) => {
-  console.log('========call get books========')
-  console.log('query : ${req.query}')
-  console.log('========================')
-
   const { platform } = req.query;
 
   const dao = new bookDao()
@@ -22,7 +18,6 @@ app.get("/books", (req, res) => {
 });
 
 app.listen(3000, () => {
-
   console.log("서버를 시작합니다.");
   createBookDatabase()
 });
@@ -36,7 +31,7 @@ function createBookDatabase() {
   models.sequelize.sync({ force: true }).then(() => {
     dao.removeAll(() => {
       platforms.forEach(platform => {
-        bookLoader.loadBooksForPlatform(platform, 10, (books) => {
+        bookLoader.loadBooksForPlatform(platform, 20, (books) => {
           dao.saveBooksForDB(books)
         })
       })

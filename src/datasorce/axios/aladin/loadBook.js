@@ -3,9 +3,11 @@ const cheerio = require("cheerio");
 const iconv = require('iconv-lite');
 
 module.exports = function loadBook(page, size, callback) {
-  const headers = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36' }
+
+  const genre = "CID=0"
+
   axios({
-    url: 'https://www.aladin.co.kr/shop/common/wbest.aspx?BranchType=1',
+    url: 'https://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&CID=0',
     method: 'GET',
     responseType: 'arraybuffer'
   }).then(response => {
