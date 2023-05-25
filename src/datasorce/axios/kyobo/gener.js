@@ -1,4 +1,4 @@
-const kyoboGener = {
+const KYOBO_GENRE = {
   종합: "A",
   소설: "B",
   에세이: "C",
@@ -30,4 +30,4 @@ const kyoboGener = {
   일본도서: "i",
 };
 
-Object.freeze(kyoboGener);
+Object.freeze(KYOBO_GENRE);
