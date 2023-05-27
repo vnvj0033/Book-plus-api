@@ -23,10 +23,16 @@ module.exports = function loadBook(page, size, genre, callback) {
 
     $(booksSelector).each((i, elem) => {
       if (startPage + 1 <= i && i <= size + startPage) {
-        const title = $(elem).find('table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > ul > li:nth-child(2) > a > b').text();
+        let title = $(elem).find('table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > ul > li:nth-child(2) > a > b').text();
+        if (title == '') {
+          title = $(elem).find('table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > ul > li:nth-child(1) > a > b').text();
+        }
         const rank = i
         const image_url = $(elem).find('table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td > div > a > div > div > img.front_cover').attr('src');
-        const writer = $(elem).find('table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > ul > li:nth-child(3) > a:nth-child(1)').text();
+        let writer = $(elem).find('table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > ul > li:nth-child(3) > a:nth-child(1)').text();
+        if (writer == '') {
+          writer = $(elem).find('table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > ul > li:nth-child(2) > a:nth-child(1)').text();
+        }
         const publisher = $(elem).find('table > tbody > tr > td:nth-child(3) > table > tbody > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > ul > li:nth-child(3) > a:nth-child(3)').text();
         const summary = ""
         list.push({
