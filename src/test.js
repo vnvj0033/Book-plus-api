@@ -10,6 +10,6 @@ const bookLoader = new bookNetLoader()
 const dao = new bookDao()
 
 
-yes24BookLoader(3, 1,  (list) => {
+aladinBookLoader(1, 10, '종교/기독교', (list) => {
     console.log(list)
 })

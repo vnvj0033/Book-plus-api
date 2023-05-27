@@ -8,12 +8,12 @@ module.exports = class BookNetLoader {
             kyoboLoadBook("1", size, (result) => {
                 callback(result)
             })
-        } else if (platform == 'yes24'){
-            yes24LoadBook("1",size, (result) => {
+        } else if (platform == 'yes24') {
+            yes24LoadBook("1", size, (result) => {
                 callback(result)
             })
         } else if (platform == 'aladin') {
-            aladinLoadBook("1",size, (result) => {
+            aladinLoadBook("1", size, '종합', (result) => {
                 callback(result)
             })
         }

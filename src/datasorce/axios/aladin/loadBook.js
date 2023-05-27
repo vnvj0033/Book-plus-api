@@ -1,13 +1,16 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const iconv = require('iconv-lite');
+const genres = require("./gener")
 
-module.exports = function loadBook(page, size, callback) {
+module.exports = function loadBook(page, size, genre, callback) {
 
-  const genre = "CID=0"
+  const cid = genres.filter(data => {
+    return data.name == genre
+  })[0].code
 
   axios({
-    url: 'https://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&CID=0',
+    url: 'https://www.aladin.co.kr/shop/common/wbest.aspx?BestType=Bestseller&BranchType=1&' + "CID=" + cid,
     method: 'GET',
     responseType: 'arraybuffer'
   }).then(response => {
