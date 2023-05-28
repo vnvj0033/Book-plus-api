@@ -4,10 +4,10 @@ const iconv = require('iconv-lite');
 
 module.exports = function loadBook(page, size, callback) {
 
-  const genre = "CategoryNumber=001001001"
+  const genre = "001001001"
 
   axios({
-    url: 'http://www.yes24.com/24/Category/BestSeller',
+    url: 'http://www.yes24.com/24/Category/BestSeller?CategoryNumber=' + genre,
     method: 'GET',
     responseType: 'arraybuffer'
   }).then(response => {

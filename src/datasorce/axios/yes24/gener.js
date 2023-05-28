@@ -4,8 +4,8 @@ module.exports = [
     code: '001'
   },
   {
-    name: '001001001',
-    code: '001'
+    name: '가정살림',
+    code: '001001001'
   },
   {
     name: '건강취미',
