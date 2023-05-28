@@ -10,6 +10,6 @@ const bookLoader = new bookNetLoader()
 const dao = new bookDao()
 
 
-kyoboBookLoader(1, 10, '종교', (list) => {
+yes24BookLoader(1, 10, '종교개신교', (list) => {
     console.log(list)
 })

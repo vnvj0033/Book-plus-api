@@ -1,13 +1,16 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const iconv = require('iconv-lite');
+const genres = require('./gener')
 
-module.exports = function loadBook(page, size, callback) {
+module.exports = function loadBook(page, size, genre, callback) {
 
-  const genre = "001001001"
+  const code = genres.filter(data => {
+    return data.name == genre
+  })[0].code
 
   axios({
-    url: 'http://www.yes24.com/24/Category/BestSeller?CategoryNumber=' + genre,
+    url: 'http://www.yes24.com/24/category/bestSeller?CategoryNumber=' + code,
     method: 'GET',
     responseType: 'arraybuffer'
   }).then(response => {
@@ -18,15 +21,15 @@ module.exports = function loadBook(page, size, callback) {
     // 1위~40위까지의 책들에 대한 selector
     const startPage = page * size - size
 
-    const booksSelector = '#bestList > ol > li';
+    const booksSelector = '#category_layout > tbody > tr';
     $(booksSelector).each((i, elem) => {
       if (startPage <= i && i <= size + startPage - 1) {
-        const title = $(elem).find('p:nth-child(3) > a').text();
+        const title = $(elem).find('td.goodsTxtInfo > p:nth-child(1) > a:nth-child(1)').text();
         const rank = i + 1
-        const image_url = $(elem).find('p.image > a > img').attr('src');
-        const writer = $(elem).find('p.aupu > a:nth-child(2)').text();
-        const publisher = $(elem).find('p.aupu > a:nth-child(1)').text();
-        const summary = $(elem).find('p.copy > a').text();
+        const image_url = $(elem).find('td.image > div > a:nth-child(1) > img').attr('src');
+        const writer = $(elem).find('td.goodsTxtInfo > div > a:nth-child(1)').text();
+        const publisher = $(elem).find('td.goodsTxtInfo > div > a:nth-child(2)').text();
+        const summary = $(elem).find('td:nth-child(2) > p').text();
         list.push({
           'platform': 'yes24',
           'rank': rank,
