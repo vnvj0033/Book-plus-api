@@ -1,33 +1,119 @@
-const KYOBO_GENRE = {
-  종합: "A",
-  소설: "B",
-  에세이: "C",
-  한국소설: "D",
-  외국소설: "E",
-  시: "F",
-  아동: "G",
-  가정생활: "H",
-  인문: "I",
-  정치사회: "J",
-  경제경영: "K",
-  건강: "L",
-  과학: "M",
-  외국어: "N",
-  예술: "Q",
-  취미스포츠: "R",
-  "TOEIC/TOEFL": "S",
-  유아: "T",
-  종교: "U",
-  아동만화: "V",
-  요리: "a",
-  "역사/문학": "b",
-  자기계발: "c",
-  여행: "d",
-  "기술/컴퓨터": "e",
-  만화: "f",
-  청소년: "g",
-  서양도서: "h",
-  일본도서: "i",
-};
+module.exports = [
+  {
+    name: '종합',
+    code: 'A'
+  },
+  {
+    name: '소설',
+    code: 'B'
+  },
+  {
+    name: '에세이',
+    code: 'C'
+  },
+  {
+    name: '한국소설',
+    code: 'D'
+  },
+  {
+    name: '외국소설',
+    code: 'E'
+  },
+  {
+    name: '시',
+    code: 'F'
+  },
+  {
+    name: '아동',
+    code: 'G'
+  },
+  {
+    name: '가정생활',
+    code: 'H'
+  },
+  {
+    name: '인문',
+    code: 'I'
+  },
+  {
+    name: '정치사회',
+    code: 'J'
+  },
+  {
+    name: '경제경영',
+    code: 'K'
+  },
+  {
+    name: '건강',
+    code: 'L'
+  },
+  {
+    name: '과학',
+    code: 'M'
+  },
+  {
+    name: '외국어',
+    code: 'N'
+  },
+  {
+    name: '예술',
+    code: 'Q'
+  },
+  {
+    name: '취미스포츠',
+    code: 'R'
+  },
+  {
+    name: 'TOEIC/TOEFL',
+    code: 'S'
+  },
+  {
+    name: '유아',
+    code: 'T'
+  },
+  {
+    name: '종교',
+    code: 'U'
+  },
+  {
+    name: '아동만화',
+    code: 'V'
+  },
+  {
+    name: '요리',
+    code: 'a'
+  },
+  {
+    name: '역사/문학',
+    code: 'b'
+  },
+  {
+    name: '자기계발',
+    code: 'c'
+  },
+  {
+    name: '여행',
+    code: 'd'
+  },
+  {
+    name: '기술/컴퓨터',
+    code: 'e'
+  },
+  {
+    name: '만화',
+    code: 'f'
+  },
+  {
+    name: '청소년',
+    code: 'g'
+  },
+  {
+    name: '서양도서',
+    code: 'h'
+  },
+  {
+    name: '일본도서',
+    code: 'i'
+  },
+]
 
-Object.freeze(KYOBO_GENRE);
