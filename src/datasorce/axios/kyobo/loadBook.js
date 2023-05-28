@@ -1,8 +1,13 @@
 const axios = require("axios");
+const genres = require("./gener")
 
-module.exports = function loadBook(page, size, callback) {
+module.exports = function loadBook(page, size, genre, callback) {
+
+  const bsslBksClstCode = genres.filter(data => {
+    return data.name == genre
+  })[0].code
+
   const period = "002";
-  const bsslBksClstCode = "A";
 
   const baseUrl = "https://product.kyobobook.co.kr/api/gw/pub/pdt/best-seller/total";
   const headers = { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36' }
